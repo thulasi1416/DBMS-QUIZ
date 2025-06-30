@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Database Keys Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🧠 Database Keys – Interactive MCQ Quiz</h2>
+
+<form id="quizForm">
+
+  <div class="question">
+    <p>1. Which of the following keys uniquely identifies each record in a table?</p>
+    <input type="radio" name="q1" value="B"> A. Foreign Key<br>
+    <input type="radio" name="q1" value="A"> B. Primary Key<br>
+    <input type="radio" name="q1" value="C"> C. Composite Key<br>
+    <input type="radio" name="q1" value="D"> D. Alternate Key<br>
+  </div>
+
+  <div class="question">
+    <p>2. A candidate key that is not selected as the primary key is called:</p>
+    <input type="radio" name="q2" value="A"> A. Super Key<br>
+    <input type="radio" name="q2" value="B"> B. Alternate Key<br>
+    <input type="radio" name="q2" value="C"> C. Foreign Key<br>
+    <input type="radio" name="q2" value="D"> D. Unique Key<br>
+  </div>
+
+  <div class="question">
+    <p>3. What is a composite key?</p>
+    <input type="radio" name="q3" value="A"> A. A key made of multiple tables<br>
+    <input type="radio" name="q3" value="B"> B. A key used in multiple databases<br>
+    <input type="radio" name="q3" value="C"> C. A key formed by combining two or more columns<br>
+    <input type="radio" name="q3" value="D"> D. A duplicate of a primary key<br>
+  </div>
+
+  <div class="question">
+    <p>4. Which of the following is true about super keys?</p>
+    <input type="radio" name="q4" value="A"> A. They can contain extra attributes not needed for uniqueness<br>
+    <input type="radio" name="q4" value="B"> B. They are always composite keys<br>
+    <input type="radio" name="q4" value="C"> C. Only one super key can exist in a table<br>
+    <input type="radio" name="q4" value="D"> D. Super key is the same as foreign key<br>
+  </div>
+
+  <div class="question">
+    <p>5. Which key allows NULL values and ensures uniqueness?</p>
+    <input type="radio" name="q5" value="A"> A. Primary Key<br>
+    <input type="radio" name="q5" value="B"> B. Unique Key<br>
+    <input type="radio" name="q5" value="C"> C. Composite Key<br>
+    <input type="radio" name="q5" value="D"> D. Foreign Key<br>
+  </div>
+
+  <div class="question">
+    <p>6. What happens if a foreign key value doesn't exist in the referenced table?</p>
+    <input type="radio" name="q6" value="A"> A. The value is ignored<br>
+    <input type="radio" name="q6" value="B"> B. The operation fails and an error is thrown<br>
+    <input type="radio" name="q6" value="C"> C. A warning is shown<br>
+    <input type="radio" name="q6" value="D"> D. The value becomes the primary key<br>
+  </div>
+
+  <div class="question">
+    <p>7. Which key is used to link two tables in a relational database?</p>
+    <input type="radio" name="q7" value="A"> A. Candidate Key<br>
+    <input type="radio" name="q7" value="B"> B. Composite Key<br>
+    <input type="radio" name="q7" value="C"> C. Foreign Key<br>
+    <input type="radio" name="q7" value="D"> D. Alternate Key<br>
+  </div>
+
+  <div class="question">
+    <p>8. How many primary keys can a table have?</p>
+    <input type="radio" name="q8" value="A"> A. Unlimited<br>
+    <input type="radio" name="q8" value="B"> B. One<br>
+    <input type="radio" name="q8" value="C"> C. Two<br>
+    <input type="radio" name="q8" value="D"> D. Depends on the number of rows<br>
+  </div>
+
+  <div class="question">
+    <p>9. Which of the following is a minimal super key?</p>
+    <input type="radio" name="q9" value="A"> A. Foreign Key<br>
+    <input type="radio" name="q9" value="B"> B. Composite Key<br>
+    <input type="radio" name="q9" value="C"> C. Candidate Key<br>
+    <input type="radio" name="q9" value="D"> D. Unique Key<br>
+  </div>
+
+  <div class="question">
+    <p>10. In a Course Registration table, which combination would best represent a composite key?</p>
+    <input type="radio" name="q10" value="A"> A. CourseID<br>
+    <input type="radio" name="q10" value="B"> B. StudentID<br>
+    <input type="radio" name="q10" value="C"> C. StudentID and CourseID<br>
+    <input type="radio" name="q10" value="D"> D. Name and Grade<br>
+  </div>
+
+  <button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function checkAnswers() {
+  const answers = {
+    q1: "A",
+    q2: "B",
+    q3: "C",
+    q4: "A",
+    q5: "B",
+    q6: "B",
+    q7: "C",
+    q8: "B",
+    q9: "C",
+    q10: "C"
+  };
+  let score = 0;
+  for (let i = 1; i <= 10; i++) {
+    const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+    if (userAnswer && userAnswer.value === answers[`q${i}`]) {
+      score++;
+    }
+  }
+  document.getElementById("result").innerText = `✅ You scored ${score} out of 10.`;
+}
+</script>
+
+</body>
+</html>
